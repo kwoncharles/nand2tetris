@@ -1,0 +1,30 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Kwonchelo Shin, UOS.
+// File name: projects/03/a/DFF.hdl
+
+/**
+ * Positive D-Type Flip-Flop:
+ * 
+ *  
+ */
+
+CHIP myDFF {
+    IN clock, data;
+    OUT out1,out2;
+
+    PARTS:
+    Not(in=clock,out=nclock);
+    Not(in=data,out=ndata);
+    And(a=data,b=nclock,out=and1out);
+    And(a=ndata,b=nclock,out=and2out);
+
+    Nor(a=and1out,b=nor2out,out=nor1out);
+    Nor(a=and2out,b=nor1out,out=nor2out);
+
+    And(a=nor1out, b=clock, out=and3out);
+    And(a=nor2out, b=clock, out=and4out);
+
+    Nor(a=and3out,b=nor4out,out=nor3out,out=out1);
+    Nor(a=and4out,b=nor3out,out=nor4out,out=out2);
+}

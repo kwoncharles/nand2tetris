@@ -1,0 +1,16 @@
+// Modified by Minho Kim 26 Sep 2014
+
+/**
+ *  Not-or gate: out = ((a==0) and (b==0)).
+ */
+
+CHIP Nor {
+    IN a, b;
+    OUT out;
+
+    PARTS:
+    Nand(a=a,b=a,out=w1);
+    Nand(a=b,b=b,out=w2);
+    Nand(a=w1,b=w2,out=w3);
+    Not(in=w3,out=out);
+}

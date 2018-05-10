@@ -1,0 +1,35 @@
+// proj1.hdl
+// 2017/9/30 by Kwoncheol Shin (2015920070) 
+// University of Seoul
+
+CHIP proj1 {
+    IN a, b, c, d;
+    OUT f, g;
+
+    PARTS:
+    Not(in=a,out=notW);
+    Not(in=b,out=notX);
+    Not(in=c,out=notY);
+    Not(in=d,out=notZ);
+
+// compute ‘f’
+    And(a=notW,b=notY,out=w1);
+    And(a=notX,b=c,out=t1);
+    Or(a=a,b=notZ,out=t2);
+    And(a=t1,b=t2,out=w2);
+    And(a=a,b=b,out=t3);
+    And(a=t3,b=d,out=w3);
+    
+    Or(a=w1,b=w2,out=out1);
+    Or(a=out1,b=w3,out=f);
+
+// compute ‘g’
+    And(a=b,b=notY,out=gt1);
+    And(a=gt1,b=d,out=gw1);
+    And(a=notX,b=notZ,out=gw2);
+   
+    Or(a=a,b=gw1,out=gout1);
+    Or(a=gout1,b=gw2,out=g);
+
+
+}

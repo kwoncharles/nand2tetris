@@ -1,0 +1,18 @@
+// Modified by Minho Kim 26 Sep 2014
+
+/**
+ *  Equivalence gate: out = (a == b).
+ */
+
+CHIP Xnor {
+    IN a, b;
+    OUT out;
+
+    PARTS:
+    Nand(a=a,b=b,out=temp);
+    Nand(a=a,b=temp,out=w1);
+
+    Nand(a=temp,b=b,out=w2);
+    Nand(a=w1,b=w2,out=w3);
+    Not(in=w3,out=out);
+}
