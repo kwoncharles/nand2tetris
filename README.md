@@ -8,5 +8,5 @@
 ## 
 
 * I think nand2tetris is the most effective way to get an intuition of how modern computer works.
-* I'd like to say a huge thank you to team nand2tetrix
+* I'd like to say a huge thank you to team nand2tetris.
 
